@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      GitHub Info
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+
+      <ion-item>
+        <h2>Username</h2>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" [(ngModel)]="username" value=""></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <button ion-button (click)="carregaLista()">Search</button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <div id="content_pai">
+    <div id="lista_user_content">
+      <ion-card *ngFor="let item of lista_user">
+        <img src="{{item.avatar_url}}" width="50">
+
+        <p>{{item.name}}</p>
+
+        <p>{{item.company}}</p>
+
+        <p>{{item.location}}</p>
+
+
+      </ion-card>
+    </div>
+
+    <!-- <div id="lista_repos"> -->
+    <div id="lista_repos">
+      <ion-list ion-item *ngFor="let item of lista">
+        <h2>{{ item.name}}</h2>
+        <p>{{ item.description}}</p>
+
+        <ul class=alinhamento_ul>
+          <li class="alinhamento_li">
+            {{ item.language}}
+          </li>
+          <li class="alinhamento_li">
+            Star {{ item.watchers}}
+          </li>
+          <li class="alinhamento_li">
+            Fork {{ item.forks}}
+          </li>
+        </ul>
+
+        <button ion-button outline>
+          <a href="{{item.html_url}}" onclick="window.open(this.href, '_blank'); return false;"> Repositório</a>
+        </button>
+
+      </ion-list>
+    </div>
+  </div>
+
+</ion-content>
